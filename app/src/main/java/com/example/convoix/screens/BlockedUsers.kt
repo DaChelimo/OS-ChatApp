@@ -31,7 +31,9 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.convoix.AppState
@@ -94,7 +96,8 @@ fun BlockedUsers(
 fun Users(userData: UserData, showDialog:(String) -> Unit){
     Row(
         modifier = Modifier
-            .background(Color.Transparent).clickable { showDialog(userData.userId) }
+            .background(Color.Transparent)
+            .clickable { showDialog(userData.userId) }
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 12.dp),
         verticalAlignment = Alignment.CenterVertically
@@ -121,4 +124,11 @@ fun Users(userData: UserData, showDialog:(String) -> Unit){
             )
 
     }
+}
+
+@Preview
+@Composable
+private fun PreviewBlockUsers() {
+    val viewModel = viewModel<ChatViewModel>()
+    BlockedUsers(viewModel = viewModel, state = AppState())
 }

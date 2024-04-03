@@ -25,8 +25,10 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.convoix.R
 
 @Composable
@@ -75,7 +77,7 @@ fun SettingOption(
         .padding(vertical = 6.dp, horizontal = 16.dp)
         .clickable { onClick() }
         .background(
-          Color.White.copy(alpha = 0.2f),
+            Color.White.copy(alpha = 0.2f),
             RoundedCornerShape(12.dp)
         ),
         verticalAlignment = Alignment.CenterVertically
@@ -103,4 +105,10 @@ fun SettingOption(
         }
     }
 
+}
+
+@Preview
+@Composable
+private fun PreviewSettings() {
+    Settings(navController = rememberNavController())
 }
